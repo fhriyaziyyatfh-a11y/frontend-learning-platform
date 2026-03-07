@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="az">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CodeMaster - AI Dəstəkli Frontend Tədris Platforması</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-brand">
+        <i class="fas fa-code"></i>
+        <span>CodeMaster</span>
+      </div>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html" class="active">Ana Səhifə</a>
+        <a href="lessons.html">Dərslər</a>
+        <a href="discover.html">Kəşf Et</a>
+        <a href="profile.html">Profil</a>
+      </div>
+      <div class="nav-auth" id="navAuth">
+        <a href="login.html" class="btn btn-outline">Daxil ol</a>
+        <a href="register.html" class="btn btn-primary">Qeydiyyat</a>
+      </div>
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+      </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-sparkles"></i>
+          <span>AI Dəstəkli Öyrənmə</span>
+        </div>
+        <h1>
+          Frontend Proqramlaşdırmanı
+          <span class="gradient-text">Oyunlaşdırılmış</span> Şəkildə Öyrən
+        </h1>
+        <p class="hero-subtitle">
+          Real-time kod redaktoru, AI analizi və oyunlaşdırılmış təcrübə ilə
+          HTML, CSS və JavaScript öyrən. Kodunu yoxla, xal topla, səviyyəni
+          yüksəlt!
+        </p>
+        <div class="hero-cta">
+          <a href="lessons.html" class="btn btn-large btn-primary">
+            <i class="fas fa-rocket"></i>
+            Öyrənməyə Başla
+          </a>
+          <a href="#features" class="btn btn-large btn-outline">
+            <i class="fas fa-play-circle"></i>
+            Necə İşləyir?
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-number">50+</span>
+            <span class="stat-label">İnteraktiv Dərs</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">AI</span>
+            <span class="stat-label">Kod Analizi</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Pulsuz</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="code-preview-window">
+          <div class="window-header">
+            <div class="window-buttons">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <span class="window-title">lesson.js</span>
+          </div>
+          <div class="code-content">
+            <pre><code><span class="code-keyword">const</span> <span class="code-function">createMagic</span> = () => {
+  <span class="code-keyword">const</span> skills = [<span class="code-string">'HTML'</span>, <span class="code-string">'CSS'</span>, <span class="code-string">'JS'</span>];
+  <span class="code-keyword">return</span> skills.<span class="code-function">map</span>(skill => ({
+    level: <span class="code-string">'Advanced'</span>,
+    power: <span class="code-number">💯</span>
+  }));
+};</code></pre>
+          </div>
+        </div>
+        <div class="floating-card card-1">
+          <i class="fas fa-check-circle"></i>
+          <span>Kod Təhlili Uğurlu!</span>
+        </div>
+        <div class="floating-card card-2">
+          <i class="fas fa-trophy"></i>
+          <span>+100 Xal Qazanıldı</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+      <div class="container">
+        <h2 class="section-title">Nə Təklif Edirik?</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-laptop-code"></i>
+            </div>
+            <h3>Real-time Redaktor</h3>
+            <p>
+              Professional kod redaktoru ilə yazdığın kodu ani olaraq gör. HTML,
+              CSS, JS və React dəstəyi.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-robot"></i>
+            </div>
+            <h3>AI Kod Analizi</h3>
+            <p>
+              Süni zəka kodunu təhlil edir, səhvləri tapır və optimallaşdırma
+              tövsiyələri verir.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-gamepad"></i>
+            </div>
+            <h3>Oyunlaşdırma</h3>
+            <p>
+              Xal topla, nişanlar qazan, səviyyəni yüksəlt. Öyrənməyi əyləncəli
+              hala gətir.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fab fa-github"></i>
+            </div>
+            <h3>GitHub İnteqrasiyası</h3>
+            <p>
+              Kodlarını birbaşa GitHub-a yüklə, başqalarının kodlarına bax və
+              şərh yaz.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+      <div class="container">
+        <h2 class="section-title">Necə İşləyir?</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h4>Dərs Seç</h4>
+            <p>HTML-dən React-ə qədər müxtəlif mövzularda dərslər.</p>
+          </div>
+          <div class="step-connector"></div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <h4>Kod Yaz</h4>
+            <p>Real-time redaktorumuzda tapşırığı yerinə yetir.</p>
+          </div>
+          <div class="step-connector"></div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <h4>AI Yoxla</h4>
+            <p>Kodunu AI-ya yoxlat və ətraflı rəy al.</p>
+          </div>
+          <div class="step-connector"></div>
+          <div class="step">
+            <div class="step-number">4</div>
+            <h4>Xal Qazan</h4>
+            <p>Uğurla tamamla və səviyyəni yüksəlt.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-content">
+          <h2>Bugün Öyrənməyə Başla!</h2>
+          <p>
+            Minlərlə tələbə artıq CodeMaster ilə proqramlaşdırma öyrənir. Sən də
+            onlara qoşul.
+          </p>
+          <a href="register.html" class="btn btn-large btn-white"
+            >Pulsuz Qeydiyyat</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <i class="fas fa-code"></i>
+            <span>CodeMaster</span>
+            <p>AI dəstəkli modern frontend tədris platforması.</p>
+          </div>
+          <div class="footer-links">
+            <div class="footer-column">
+              <h4>Platforma</h4>
+              <a href="lessons.html">Dərslər</a>
+              <a href="discover.html">Kəşf Et</a>
+              <a href="profile.html">Profil</a>
+            </div>
+            <div class="footer-column">
+              <h4>Dəstək</h4>
+              <a href="#">Kömək Mərkəzi</a>
+              <a href="#">Əlaqə</a>
+              <a href="#">FAQ</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2024 CodeMaster. Bütün hüquqlar qorunur.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/utils.js"></script>
+    <script>
+      // Check auth status and update nav
+      document.addEventListener("DOMContentLoaded", () => {
+        updateNavigation();
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+        const navLinks = document.getElementById("navLinks");
+
+        mobileMenuBtn?.addEventListener("click", () => {
+          navLinks.classList.toggle("active");
+        });
+      });
+    </script>
+  </body>
+</html>

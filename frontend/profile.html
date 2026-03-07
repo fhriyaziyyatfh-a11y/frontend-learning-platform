@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="az">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profil - CodeMaster</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-brand">
+        <i class="fas fa-code"></i>
+        <span>CodeMaster</span>
+      </div>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Ana Səhifə</a>
+        <a href="lessons.html">Dərslər</a>
+        <a href="discover.html">Kəşf Et</a>
+        <a href="profile.html" class="active">Profil</a>
+      </div>
+      <div class="nav-auth" id="navAuth">
+        <button class="btn btn-outline" id="logoutBtn">Çıxış</button>
+      </div>
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+      </button>
+    </nav>
+
+    <!-- Profile Header -->
+    <section class="profile-header">
+      <div class="container">
+        <div class="profile-card">
+          <div class="profile-avatar">
+            <div class="avatar-placeholder" id="userAvatar">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="level-badge" id="levelBadge">Beginner</div>
+          </div>
+          <div class="profile-info">
+            <h1 id="userName">İstifadəçi Adı</h1>
+            <p id="userEmail">email@example.com</p>
+            <div class="profile-stats-row">
+              <div class="stat-box">
+                <i class="fas fa-star"></i>
+                <span class="stat-number" id="totalPoints">0</span>
+                <span class="stat-label">Xal</span>
+              </div>
+              <div class="stat-box">
+                <i class="fas fa-check-circle"></i>
+                <span class="stat-number" id="completedLessons">0</span>
+                <span class="stat-label">Tamamlanan</span>
+              </div>
+              <div class="stat-box">
+                <i class="fas fa-trophy"></i>
+                <span class="stat-number" id="badgesCount">0</span>
+                <span class="stat-label">Nişan</span>
+              </div>
+            </div>
+          </div>
+          <div class="profile-actions">
+            <button
+              class="btn btn-outline"
+              id="connectGithubBtn"
+              style="display: none"
+            >
+              <i class="fab fa-github"></i>
+              GitHub Bağla
+            </button>
+            <div
+              class="github-connected"
+              id="githubConnected"
+              style="display: none"
+            >
+              <i class="fab fa-github"></i>
+              <span id="githubUsername">username</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Profile Content -->
+    <section class="profile-content">
+      <div class="container">
+        <div class="profile-grid">
+          <!-- Progress Section -->
+          <div class="profile-section">
+            <h3><i class="fas fa-chart-line"></i> İrəliləyiş</h3>
+            <div class="progress-bar-large">
+              <div
+                class="progress-fill"
+                id="progressFill"
+                style="width: 0%"
+              ></div>
+              <span class="progress-text-large" id="progressText"
+                >0% Tamamlandı</span
+              >
+            </div>
+            <div class="category-progress" id="categoryProgress">
+              <!-- Category bars will be inserted here -->
+            </div>
+          </div>
+
+          <!-- Badges Section -->
+          <div class="profile-section">
+            <h3><i class="fas fa-medal"></i> Nişanlar</h3>
+            <div class="badges-grid" id="badgesGrid">
+              <!-- Badges will be inserted here -->
+            </div>
+          </div>
+
+          <!-- Completed Lessons -->
+          <div class="profile-section full-width">
+            <h3><i class="fas fa-history"></i> Tamamlanan Dərslər</h3>
+            <div class="completed-lessons-list" id="completedLessonsList">
+              <!-- Lessons will be inserted here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/profile.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        checkAuth();
+        updateNavigation();
+        loadProfile();
+
+        document.getElementById("logoutBtn")?.addEventListener("click", logout);
+      });
+    </script>
+  </body>
+</html>

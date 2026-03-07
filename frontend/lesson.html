@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="az">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dərs - CodeMaster</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/dracula.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/xml/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/css/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/htmlmixed/htmlmixed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+  </head>
+  <body class="lesson-page">
+    <!-- Navigation -->
+    <nav class="navbar navbar-compact">
+      <div class="nav-brand">
+        <i class="fas fa-code"></i>
+        <span>CodeMaster</span>
+      </div>
+      <div class="lesson-nav-info">
+        <span id="lessonCategory">HTML</span>
+        <h2 id="lessonTitle">Dərs Başlığı</h2>
+      </div>
+      <div class="nav-actions">
+        <button class="btn btn-icon" id="hintsBtn" title="İpucular">
+          <i class="fas fa-lightbulb"></i>
+        </button>
+        <button
+          class="btn btn-icon"
+          id="saveGithubBtn"
+          title="GitHub-a Yadda Saxla"
+        >
+          <i class="fab fa-github"></i>
+        </button>
+        <a href="lessons.html" class="btn btn-outline btn-sm">
+          <i class="fas fa-arrow-left"></i>
+          Dərslərə Qayıt
+        </a>
+      </div>
+    </nav>
+
+    <!-- Main Workspace -->
+    <main class="workspace">
+      <!-- Left Panel: Instructions -->
+      <aside class="panel panel-left" id="instructionsPanel">
+        <div class="panel-header">
+          <i class="fas fa-book"></i>
+          <h3>Təlimatlar</h3>
+          <button class="panel-toggle" id="toggleInstructions">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+        </div>
+        <div
+          class="panel-content instructions-content"
+          id="instructionsContent"
+        >
+          <!-- Markdown content will be rendered here -->
+        </div>
+        <div class="task-box">
+          <h4><i class="fas fa-tasks"></i> Tapşırıq</h4>
+          <p id="taskText">Tapşırıq mətni burada görünəcək...</p>
+        </div>
+      </aside>
+
+      <!-- Center Panel: Code Editor -->
+      <section class="panel panel-center">
+        <div class="editor-tabs">
+          <button class="tab-btn active" data-mode="html">HTML</button>
+          <button class="tab-btn" data-mode="css">CSS</button>
+          <button class="tab-btn" data-mode="javascript">JS</button>
+        </div>
+        <div class="editor-container" id="editorContainer"></div>
+        <div class="editor-toolbar">
+          <button class="btn btn-secondary" id="resetCodeBtn">
+            <i class="fas fa-undo"></i>
+            Sıfırla
+          </button>
+          <button class="btn btn-primary" id="runCodeBtn">
+            <i class="fas fa-play"></i>
+            İşlət
+          </button>
+          <button class="btn btn-ai" id="analyzeBtn">
+            <i class="fas fa-robot"></i>
+            AI ilə Yoxla
+          </button>
+        </div>
+      </section>
+
+      <!-- Right Panel: Preview -->
+      <aside class="panel panel-right" id="previewPanel">
+        <div class="panel-header">
+          <i class="fas fa-eye"></i>
+          <h3>Önizləmə</h3>
+          <div class="preview-actions">
+            <button
+              class="btn btn-icon btn-sm"
+              id="refreshPreview"
+              title="Yenilə"
+            >
+              <i class="fas fa-sync-alt"></i>
+            </button>
+            <button class="panel-toggle" id="togglePreview">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+        <div class="preview-container">
+          <iframe
+            id="previewFrame"
+            sandbox="allow-forms allow-scripts allow-same-origin"
+          ></iframe>
+        </div>
+      </aside>
+    </main>
+
+    <!-- Bottom Panel: AI Analysis -->
+    <section class="ai-panel" id="aiPanel">
+      <div class="ai-panel-header">
+        <div class="ai-title">
+          <i class="fas fa-robot"></i>
+          <span>AI Kod Analizi</span>
+        </div>
+        <div class="ai-score" id="aiScore" style="display: none">
+          <span class="score-label">Xal:</span>
+          <span class="score-value" id="scoreValue">0</span>
+          <span class="score-total">/100</span>
+        </div>
+        <button class="btn btn-icon" id="toggleAiPanel">
+          <i class="fas fa-chevron-down"></i>
+        </button>
+      </div>
+      <div class="ai-panel-content" id="aiPanelContent">
+        <div class="ai-placeholder" id="aiPlaceholder">
+          <i class="fas fa-magic"></i>
+          <p>"AI ilə Yoxla" düyməsinə basaraq kodunun analizini əldə et</p>
+        </div>
+        <div class="ai-results" id="aiResults" style="display: none">
+          <div class="ai-general-comment" id="aiGeneralComment"></div>
+          <div class="ai-feedback-list" id="aiFeedbackList"></div>
+          <div class="ai-improvements" id="aiImprovements"></div>
+        </div>
+        <div class="ai-loading" id="aiLoading" style="display: none">
+          <i class="fas fa-spinner fa-spin"></i>
+          <p>Kodunuz təhlil edilir...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hints Modal -->
+    <div class="modal" id="hintsModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3><i class="fas fa-lightbulb"></i> İpucular</h3>
+          <button class="modal-close" id="closeHintsModal">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <ul class="hints-list" id="hintsList"></ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- GitHub Save Modal -->
+    <div class="modal" id="githubModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3><i class="fab fa-github"></i> GitHub-a Yüklə</h3>
+          <button class="modal-close" id="closeGithubModal">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="githubSaveForm">
+            <div class="form-group">
+              <label>Repo Adı</label>
+              <input
+                type="text"
+                id="repoName"
+                required
+                placeholder="frontend-learning"
+              />
+            </div>
+            <div class="form-group">
+              <label>Fayl Adı</label>
+              <input type="text" id="fileName" required value="lesson.html" />
+            </div>
+            <div class="form-group">
+              <label>Təsvir</label>
+              <textarea
+                id="repoDescription"
+                rows="2"
+                placeholder="Kod təsviri..."
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label class="checkbox">
+                <input type="checkbox" id="isPublic" checked />
+                <span class="checkmark"></span>
+                İctimai repo
+              </label>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">
+              <i class="fab fa-github"></i>
+              Yüklə
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Completion Modal -->
+    <div class="modal modal-success" id="completionModal">
+      <div class="modal-content">
+        <div class="completion-animation">
+          <i class="fas fa-trophy"></i>
+          <div class="confetti"></div>
+        </div>
+        <h2>Təbriklər!</h2>
+        <p>Dərsi uğurla tamamladın!</p>
+        <div class="completion-stats">
+          <div class="stat-item">
+            <span class="stat-label">Qazanılan Xal</span>
+            <span class="stat-value" id="earnedPoints">+100</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Kod Xalı</span>
+            <span class="stat-value" id="codeScore">95/100</span>
+          </div>
+        </div>
+        <div class="new-badges" id="newBadges"></div>
+        <div class="modal-actions">
+          <a href="lessons.html" class="btn btn-outline">Dərslərə Qayıt</a>
+          <button class="btn btn-primary" id="nextLessonBtn">
+            Növbəti Dərs
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/lesson.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        checkAuth();
+        initLesson();
+      });
+    </script>
+  </body>
+</html>
